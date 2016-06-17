@@ -57,7 +57,7 @@ void ofxLabFlexParticleSystem::setupQuad( ofVec2f& topLeft,
     _worldQuad.br = bottomRight;
 }
 
-void ofxLabFlexParticleSystem::setWallCallback( std::tr1::function<void ( ofxLabFlexParticle* )> func,
+void ofxLabFlexParticleSystem::setWallCallback( function<void ( ofxLabFlexParticle* )> func,
                                          WallCallbackType type,
                                          bool override)
 {
@@ -547,7 +547,7 @@ void ofxLabFlexParticleSystem::printIDs()
 bool ofxLabFlexParticleSystem::removeParticle( unsigned long uniqueID )
 {
     //cout << "trying to delete particle " << uniqueID << endl;
-    if( !_updateLock.tryLock() ) {
+    if( !_updateLock.try_lock() ) {
         cerr << "unagle to obtain lock" << endl;
         return false;
     }
